@@ -30,7 +30,7 @@ To run the Movie Bingo app locally, follow these steps:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://gitlab.com/DanielPrince/bingoapp
+   git clone git@github.com:DanielCyubahiro/bingo-app.git
    ```
 
 2. **Navigate into the project folder**:
