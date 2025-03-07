@@ -1,0 +1,290 @@
+/* Base Styles */
+body {
+    margin: 0;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #57290a;
+    background-image: url("/public/images/background.png");
+    background-position: center;
+    text-align: center;
+}
+
+h1, h2 {
+    margin: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Heading Container */
+.heading-container {
+    background: #F5F5DC;
+    padding: 5px 15px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    margin-bottom: 3%;
+}
+
+/* Heading Styles */
+.heading-container h1 {
+    font-size: 4vw;
+    color: #FF5E00;
+    background: linear-gradient(45deg, #FFCC00, #FF5E00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Bingo Grid */
+.bingo-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    padding: 1.5%;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    background-color: rgba(201, 173, 127, 0.5);
+    background-image: url("/public/images/cardBackground.png");
+    background-position: center;
+    width: 90vmin;
+    height: 80vmin;
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+}
+
+/* Card Styles */
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 16vmin;
+    height: 13vmin;
+    background: linear-gradient(45deg, #F5F5DC, #D2B48C);
+    border: 2px solid #ddd;
+    font-size: 1.8vw;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    color: #333;
+    text-transform: uppercase;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Card Hover and Marked Effects */
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card.marked {
+    background: linear-gradient(45deg, #4CAF50, #A18560);
+    color: white;
+    text-decoration: line-through;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Center Card Styles */
+.card.center-card {
+    color: #FFD700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(45deg, #D2B48C, #A18560);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.card.center-card::before {
+    content: "🍿";
+    font-size: 3vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Hover effect - no scaling for center card */
+.card.center-card:hover {
+    transform: none;
+}
+
+/* Win Counter Styles */
+.win-counter {
+    text-align: center;
+    background: #F5F5DC;
+    padding: 2px 15px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    margin-top: 2%;
+}
+
+.win-counter h2 {
+    font-size: 2vw;
+    color: #4CAF50;
+}
+
+.win-counter.animate {
+    animation: winAnimation 0.5s ease-out;
+}
+
+/* Button Styles */
+.reset-overlay,
+.bingo-overlay,
+.fireworks-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.reset-button {
+    padding: 20px 40px;
+    font-size: 3rem;
+    background-color: #f39c12;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.reset-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.bingo-grid.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* Keyframe Animation */
+@keyframes winAnimation {
+    0% {
+        transform: scale(1);
+        color: #FF4500;
+    }
+    50% {
+        transform: scale(1.5);
+        color: #FFD700;
+    }
+    100% {
+        transform: scale(1);
+        color: #FF4500;
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 576px) {
+    .heading-container h1 {
+        font-size: 6vw;
+    }
+
+    .win-counter h2 {
+        font-size: 6vw;
+    }
+
+    .card {
+        font-size: 2.2vw;
+    }
+
+    .card.center-card::before {
+        font-size: 6vw;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+    .heading-container h1 {
+        font-size: 5vw;
+    }
+
+    .win-counter h2 {
+        font-size: 3vw;
+    }
+
+    .card {
+        font-size: 2.2vw;
+    }
+
+    .card.center-card::before {
+        font-size: 6vw;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .heading-container h1 {
+        font-size: 4.5vw;
+    }
+
+    .win-counter h2 {
+        font-size: 2.5vw;
+    }
+
+    .card {
+        font-size: 2vw;
+    }
+
+    .card.center-card::before {
+        font-size: 7vw;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    .heading-container h1 {
+        font-size: 4vw;
+    }
+
+    .win-counter h2 {
+        font-size: 2vw;
+    }
+
+    .card {
+        font-size: 18px;
+    }
+
+}
+
+@media (min-width: 1200px) and (max-width: 1600px) {
+    .heading-container h1 {
+        font-size: 2.7vw;
+    }
+
+    .win-counter h2 {
+        font-size: 1.4vw;
+    }
+
+    .card {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .heading-container h1 {
+        font-size: 2vw;
+    }
+
+    .win-counter h2 {
+        font-size: 1.2vw;
+    }
+
+    .card {
+        font-size: 20px;
+    }
+}
